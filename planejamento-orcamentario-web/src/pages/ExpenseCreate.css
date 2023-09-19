@@ -37,3 +37,20 @@
     max-width: 48%;
     margin: 0;
 }
+
+.submitButton{
+    height: 40px;
+    border: none;
+    padding: 0 12px;
+    background-color: #4cc2ce;
+    width: 100%;
+    margin: 20px 0 50px 0;
+    transition: 0.25s;
+    font-size: 1.2em;
+    color: black;
+}
+
+.submitButton:hover{
+    background-color: #afd7db;
+    transition: 0.25s;
+}

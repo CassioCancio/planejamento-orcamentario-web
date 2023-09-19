@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
 import './ExpenseCreate.css';
 import { getAllCategories } from "../services/categoryService";
 import { getAllGroups } from "../services/groupService";
@@ -29,7 +30,7 @@ function Expense() {
 
   return (
     <div>
-        <NavBar />
+        <NavBar/>
 
         <h1>Insira os dados da nova despesa</h1>
 
@@ -85,8 +86,9 @@ function Expense() {
             <label>Valor inicial</label>
             <input type="number" step="0.01" name="quantity" min="0.01"></input>
           </div>
-          <button></button>
+          <button className="submitButton">Inserir despesa</button>
         </form>
+
     </div>
   );
 
