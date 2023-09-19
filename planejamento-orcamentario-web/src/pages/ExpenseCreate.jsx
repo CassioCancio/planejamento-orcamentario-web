@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar"
 import './ExpenseCreate.css';
 import { getAllCategories } from "../services/categoryService";
 import { getAllGroups } from "../services/groupService";
+import { createNewExpense } from "../services/expenseService";
 
 function Expense() {
   const [categoryOptions, setCategoryOptions] = useState([]);
@@ -25,6 +26,11 @@ function Expense() {
       ...expense, 
       [name]:value
     });
+  }
+
+  const handleNewExpense = async () => {
+    const expenseCreated = await createNewExpense(expense);
+    setExpense(expenseCreated);
   }
 
   return (
@@ -85,7 +91,7 @@ function Expense() {
             <label>Valor inicial</label>
             <input type="number" step="0.01" name="quantity" min="0.01"></input>
           </div>
-          <button className="submitButton">Inserir despesa</button>
+          <button className="submitButton" onClick={handleNewExpense}>Inserir despesa</button>
         </form>
 
     </div>
