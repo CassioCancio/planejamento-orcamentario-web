@@ -1,16 +1,18 @@
 .createExpenseForm{
-    width: 90%;
+    width: 80%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .labelInput{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
     height: 75px;
     justify-content: space-between;
+    margin-bottom: 20px;
     width: 100%;
 }
 
@@ -28,6 +30,7 @@
 }
 
 .display{
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     height: 75px;
@@ -39,18 +42,33 @@
 }
 
 .submitButton{
-    height: 40px;
+    height: 45px;
     border: none;
     padding: 0 12px;
-    background-color: #4cc2ce;
-    width: 100%;
-    margin: 20px 0 50px 0;
+    width: 25%;
+    margin: 30px auto 0 auto;
+    border-radius: 15px;
+    color: #444;
+    font-weight: 400;
     transition: 0.25s;
-    font-size: 1.2em;
-    color: black;
+    font-size: 1.1em;
+    box-shadow: 0px 0px 20px #ddd;
+    background-color: #4cc2ce;
+    cursor: pointer;
+    text-align: center;
+
+
+    
+    background-color: #d0ebef;
+    border-radius: 3px;
+    border: 1px solid #298b9c;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #298b9c;
 }
 
+
 .submitButton:hover{
-    background-color: #afd7db;
+    background-color: #eee;
     transition: 0.25s;
 }

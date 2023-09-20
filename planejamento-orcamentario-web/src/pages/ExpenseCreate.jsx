@@ -5,7 +5,7 @@ import './ExpenseCreate.css';
 function Expense() {
 
   return (
-    <div>
+    <div className="mainMargin">
         <NavBar/>
 
         <h1>Insira os dados da nova despesa</h1>
