@@ -1,0 +1,25 @@
+.footerBar{
+    width: 100%;
+    background-color: #298b9c;
+    height: 150px;
+    box-shadow: 0px 5px 40px #ddd;
+    margin-top: 60px;
+    text-align: center;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 1em;
+}
+
+.footerBar address{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.addressTitle{
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}

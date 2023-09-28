@@ -1,5 +1,5 @@
 .createExpenseForm{
-    width: 80%;
+    width: 60%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -10,36 +10,48 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 75px;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     width: 100%;
 }
 
-.labelInput > input, select{
+.labelInput > input, select, textarea{
     height: 40px;
     border-radius: 0px;
     border: none;
     border-bottom: 2px solid #4cc2ce;
-    padding: 0 12px;
-    background-color: #eee;
+    padding: 5px 12px 0 10px;
+    background-color: #f3f3f3;
+    font-size: 1em;
+    margin-top: 10px;
 }
+
+
+
+.labelInput > textarea{
+    height: 80px;
+    padding: 10px;
+}
+
+
 
 .labelInput > label{
     font-size: 1.2em;
 }
 
-.display{
+.displayTwo{
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     height: 75px;
 }
 
-.display > div{
+.displayTwo > div{
     max-width: 48%;
     margin: 0;
 }
+
+
+
 
 .submitButton{
     height: 45px;
@@ -56,9 +68,6 @@
     background-color: #4cc2ce;
     cursor: pointer;
     text-align: center;
-
-
-    
     background-color: #d0ebef;
     border-radius: 3px;
     border: 1px solid #298b9c;
@@ -71,4 +80,9 @@
 .submitButton:hover{
     background-color: #eee;
     transition: 0.25s;
+}
+
+
+.lockedInput{
+    background-color: #000;
 }

@@ -14,11 +14,15 @@ code {
 
 body {
   background-color: white;
-  padding: 80px 60px 0 60px;
+  padding-top: 80px;
+}
+
+.mainMargin{
+  margin: 0 60px;
 }
 
 h1 {
   color: #298b9c;
   font-size: 1.8em;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
