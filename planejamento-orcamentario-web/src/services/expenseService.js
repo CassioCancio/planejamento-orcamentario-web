@@ -6,9 +6,12 @@ export const createNewExpense = async (expense) => {
             body: JSON.stringify(expense)
         };
         const response = await fetch('http://localhost:8080/expense', requestOptions); // TODO: variavel global
-        const createdExpense = await response.json();
-        return createdExpense;
+        if(response.ok){
+            window.location.href = '/';
+        } else{
+            throw new Error("Falha ao criar despesa");
+        }
     } catch (error) {
-        console.error('Erro:'+ error);
+        console.error(error);
     }
 }
