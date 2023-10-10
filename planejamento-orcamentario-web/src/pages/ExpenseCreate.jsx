@@ -45,7 +45,7 @@ function Expense() {
 
         <form className="createExpenseForm">
           <div className="labelInput">
-            <label>Título</label><input placeholder="Edital de pesquisa"></input>
+            <label>Nome</label><input placeholder="Edital de pesquisa"></input>
           </div>
 
           <div className="displayTwo">
@@ -80,24 +80,27 @@ function Expense() {
           
           <div className="displayTwo">
             <div className="labelInput">
-              <label>Balanço</label><input placeholder="2023" disabled className="lockedInput"></input>
-            </div>
+            <label>Solicitante</label><input placeholder=""></input>
+          </div>
             <div className="labelInput">
-              <label>Instituição</label>
-              <select><option>IME</option></select>
+              <label>Ano Fiscal</label><input placeholder="2023" disabled className="lockedInput"></input>
             </div>
           </div>
 
 
           <div className="displayTwo">
             <div className="labelInput">
-              <label>Data de pagamento</label><input type="date"></input>
+              <label>Previsão de pagamento</label><input type="date"></input>
             </div>
             <div className="labelInput">
-              <label>Valor inicial</label>
+              <label>Valor solicitado</label>
               <NumericFormat thousandSeparator={true} prefix={'R$ '} />
             </div>
           </div>
+
+
+
+
 
           <div className="labelInput">
             <label>Observação</label><textarea placeholder="Edital para ..."></textarea>
@@ -119,3 +122,6 @@ export default Expense;
 
 
 
+
+//  TODO ⁃ Adicionar input solicitante;
+//  TODO ⁃ Remover Instituição;
