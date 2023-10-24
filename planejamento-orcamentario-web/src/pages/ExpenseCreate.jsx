@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { NumericFormat } from 'react-number-format';
 
 import './ExpenseCreate.css';
+
 import { getAllCategories } from "../services/categoryService";
 import { getAllGroups } from "../services/groupService";
 import { createNewExpense } from "../services/expenseService";
 import { initialExpense } from "../utils/initialExpense";
 
-import { NumericFormat } from 'react-number-format';
+import CategoryInput from "../components/Common/Inputs/CategoryInput";
+import GroupInput from '../components/Common/Inputs/GroupInput';
 
 function Expense() {
   const [categoryOptions, setCategoryOptions] = useState([]);
@@ -50,67 +53,87 @@ function Expense() {
   }
 
   return (
-    <div className="mainMargin">
-        <h1>Insira os dados da nova despesa</h1>
+    <div className="createExpenseContainer">
+      <div className="mainMargin">
+          <h1>Insira os dados da nova despesa</h1>
 
-        <div className="labelInput">
-          <label>Nome</label><input type="text" value={expense.name} onChange={(e) => handleObjectInput({ name:'name', value: e.target.value })} placeholder="Edital de pesquisa"></input>
-        </div>
-
-        <div className="displayTwo">
           <div className="labelInput">
-            <label>Grupo da despesa</label>
-            <select id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
-              <option value="default">—</option>
-              {groupOptions.map(group => {
-                return (
-                  <option key={group.key} value={group.id}>
-                    {group.number + ` - ` + group.name}
-                  </option>
-                )
-              })}
-            </select>
-
+            <label>Nome</label>
+            <input 
+              type="text" 
+              value={expense.name}
+              onChange={(e) => handleObjectInput({ name:'name', value: e.target.value })} 
+              placeholder="Edital de pesquisa"
+            />
           </div>
-          <div className="labelInput">
-            <label>Categoria de despesa</label>
-            <select onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
-              <option key={0} value="default">—</option>
-              {categoryOptions.map(category => {
-                return (
-                  <option key={category.key} value={category.id}>
-                    {category.name}
-                  </option>
-                )
-              })}
-            </select>
-          </div>
-        </div>
-        
-        <div className="displayTwo">
-          <div className="labelInput">
-          <label>Solicitante</label><input value={expense.requester} onChange={(e) => handleObjectInput({ name:'requester', value: e.target.value })} placeholder=""></input>
-        </div>
-          <div className="labelInput">
-            <label>Ano Fiscal</label><input value={expense.balanceId} placeholder="2023" disabled className="lockedInput"></input>
-          </div>
-        </div>
 
-        <div className="displayTwo">
-          <div className="labelInput">
-            <label>Previsão de pagamento</label><input value={expense.expectedPaymentDate} onChange={(e) => handleObjectInput({ name:'expectedPaymentDate', value: e.target.value })} type="date"></input>
+          <div className="displayTwo">
+            <GroupInput 
+              label={"Grupo da despesa"} 
+              handleSelectId={handleSelectId} 
+              groupOptions={groupOptions}
+            />
+            <CategoryInput 
+              label={"Categoria da despesa"} 
+              handleSelectId={handleSelectId} 
+              categoryOptions={categoryOptions}
+            />
           </div>
-          <div className="labelInput">
-            <label>Valor solicitado</label>
-            <NumericFormat value={expense.requestedValue} onChange={(e) => handleMonetaryInput({ name:'requestedValue', value: e.target.value })} thousandSeparator={true} prefix={'R$ '} />
+          
+          <div className="displayTwo">
+            <div className="labelInput">
+              <label>Solicitante</label>
+              <input 
+                value={expense.requester} 
+                onChange={(e) => handleObjectInput({ name:'requester', value: e.target.value })} 
+                placeholder=""
+              />
+            </div>
+            <div className="labelInput">
+              <label>Ano Fiscal</label>
+              <input 
+                value={expense.balanceId}
+                placeholder="2023" 
+                disabled 
+                className="lockedInput"
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="labelInput">
-          <label>Observação</label><textarea value={expense.observation} onChange={(e) => handleObjectInput({ name:'observation', value: e.target.value })} placeholder="Edital para ..."></textarea>
-        </div>
-        <button className="submitButton" onClick={handleNewExpense}>Inserir despesa</button>
+          <div className="displayTwo">
+            <div className="labelInput">
+              <label>Previsão de pagamento</label>
+              <input 
+                value={expense.expectedPaymentDate} 
+                onChange={(e) => handleObjectInput({ name:'expectedPaymentDate', value: e.target.value })} 
+                type="date"
+              />
+            </div>
+            <div className="labelInput">
+              <label>Valor solicitado</label>
+              <NumericFormat 
+                value={expense.requestedValue} 
+                onChange={(e) => handleMonetaryInput({ name:'requestedValue', value: e.target.value })} 
+                thousandSeparator={true} 
+                prefix={'R$ '} 
+              />
+            </div>
+          </div>
 
+          <div className="labelInput">
+            <label>Observação</label>
+            <textarea 
+              value={expense.observation} 
+              onChange={(e) => handleObjectInput({ name:'observation', value: e.target.value })} 
+              placeholder="Edital para ..."
+            />
+          </div>
+          
+          <button className="submitButton" onClick={handleNewExpense}>
+            Inserir despesa
+          </button>
+
+      </div>
     </div>
   );
 
