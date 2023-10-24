@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import NavBar from "../components/NavBar"
 import './ExpenseCreate.css';
 import { getAllCategories } from "../services/categoryService";
 import { getAllGroups } from "../services/groupService";
@@ -12,7 +11,7 @@ import { NumericFormat } from 'react-number-format';
 function Expense() {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [groupOptions, setGroupOptions] = useState([]);
-  const [expense, setExpense] = useState(initialExpense); // TODO: Criar um objeto inicial padrão para a despesa
+  const [expense, setExpense] = useState(initialExpense);
 
   useEffect(() => {
     const fetchSelectsData = (async () => {
@@ -52,8 +51,6 @@ function Expense() {
 
   return (
     <div className="mainMargin">
-        <NavBar/>
-
         <h1>Insira os dados da nova despesa</h1>
 
         <div className="labelInput">
@@ -122,12 +119,3 @@ function Expense() {
 }
 
 export default Expense;
-
-
-
-
-
-
-
-//  TODO ⁃ Adicionar input solicitante;
-//  TODO ⁃ Remover Instituição;

@@ -15,3 +15,36 @@ export const createNewExpense = async (expense) => {
         console.error(error);
     }
 }
+
+export const getExpensesByBalance = async (anoFiscal) => {
+    let expenses = [];
+    try{
+        const response = await fetch('http://localhost:8080/expense/byBalance/' + anoFiscal);
+        if(response.ok){
+            expenses = await response.json();
+        } else {
+            throw new Error("Erro ao buscar despensas do ano fiscal" + anoFiscal)
+        }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        return expenses;
+    }
+}
+
+export const getExpenseById = async (id) => {
+    let expense = null;
+    try{
+        const response = await fetch('http://localhost:8080/expense/'+ id)
+        if(expense.ok){
+            expense = await response.json();
+        } else {
+            throw new Error("Erro ao busca despesa com id " + id)
+        }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        return expense;
+    }
+
+}
