@@ -25,14 +25,10 @@
     margin-top: 10px;
 }
 
-
-
 .labelInput > textarea{
     height: 80px;
     padding: 10px;
 }
-
-
 
 .labelInput > label{
     font-size: 1.2em;
@@ -49,9 +45,6 @@
     max-width: 48%;
     margin: 0;
 }
-
-
-
 
 .submitButton{
     height: 45px;

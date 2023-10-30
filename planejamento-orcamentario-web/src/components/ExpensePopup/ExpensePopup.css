@@ -1,0 +1,68 @@
+.backShadow{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: #555555ac;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+}
+
+.popupExpense{
+    position: fixed;
+    top: 10vh;
+    left: 15%;
+    border-radius: 20px;
+    height: 80vh;
+    width: 70%;
+    background-color: white;
+    border: 1px solid #777;
+    box-shadow: 0 0 50px #555;
+    display: flex;
+    padding: 20px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.closeIcon{
+    background-color: white;
+    border: none;
+    position: absolute;
+    left: 96%;
+    cursor: pointer;
+}
+
+.closeIcon > img{
+    width: 15px;
+}
+
+.popupForm{
+    width: 80%;
+    margin: auto;
+}
+
+.labelInputPopup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.labelInputPopup > input, select, textarea{
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    border: 1px solid #bbb;
+    padding: 0px 12px 0 10px;
+    background-color: #f8f8f8;
+    font-size: 1em;
+    margin-top: 10px;
+    outline: none;
+}
+
+.labelInputPopup > label{
+    color: #298b9c;
+    font-weight: 600;
+}

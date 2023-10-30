@@ -36,7 +36,7 @@ export const getExpenseById = async (id) => {
     let expense = null;
     try{
         const response = await fetch('http://localhost:8080/expense/'+ id)
-        if(expense.ok){
+        if(response.ok){
             expense = await response.json();
         } else {
             throw new Error("Erro ao busca despesa com id " + id)
@@ -46,5 +46,23 @@ export const getExpenseById = async (id) => {
     } finally {
         return expense;
     }
+}
 
+export const updateExpense = async (expense) => {
+    try{
+        const requestOptions = {
+            method: "PUT",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(expense)
+        };
+        const response = await fetch("http://localhost:8080/expense", requestOptions);
+        if(response.ok){
+            return true;
+        } else {
+            throw new Error("Falha ao editar despesa");
+        } 
+    } catch (error) {
+        console.error(error);
+        return false;    
+    }
 }

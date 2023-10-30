@@ -8,9 +8,6 @@ import { getAllGroups } from "../services/groupService";
 import { createNewExpense } from "../services/expenseService";
 import { initialExpense } from "../utils/initialExpense";
 
-import CategoryInput from "../components/Common/Inputs/CategoryInput";
-import GroupInput from '../components/Common/Inputs/GroupInput';
-
 function Expense() {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [groupOptions, setGroupOptions] = useState([]);
@@ -68,16 +65,32 @@ function Expense() {
           </div>
 
           <div className="displayTwo">
-            <GroupInput 
-              label={"Grupo da despesa"} 
-              handleSelectId={handleSelectId} 
-              groupOptions={groupOptions}
-            />
-            <CategoryInput 
-              label={"Categoria da despesa"} 
-              handleSelectId={handleSelectId} 
-              categoryOptions={categoryOptions}
-            />
+            <div className="labelInput">
+            <label>Grupo da Despesa</label>
+            <select id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
+              <option value="default">—</option>
+              {groupOptions.map(group => {
+                return (
+                  <option key={group.key} value={group.id}>
+                    {group.number + ` - ` + group.name}
+                  </option>
+                )
+              })}
+            </select>
+            </div>
+            <div className="labelInput">
+              <label>Categoria da despesa</label>
+              <select onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
+                  <option key={0} value="default">—</option>
+                  {categoryOptions.map(category => {
+                      return (
+                          <option key={category.key} value={category.id}>
+                          {category.name}
+                          </option>
+                      )
+                  })}
+              </select>
+            </div>
           </div>
           
           <div className="displayTwo">
