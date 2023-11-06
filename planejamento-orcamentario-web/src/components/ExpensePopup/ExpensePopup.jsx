@@ -65,9 +65,10 @@ return (
             </button>
 
         <div className="popupForm">
-          <div className="labelInputPopup">
+          <div className="labelPopupInput">
             <label>Nome</label>
             <input
+              className="inputSelectPopUp"
               type="text"
               value={expense.name}
               onChange={(e) =>
@@ -78,9 +79,9 @@ return (
           </div>
 
           <div className="displayTwo">
-          <div className="labelInputPopup">
+          <div className="labelPopupInput">
             <label>Grupo da Despesa</label>
-            <select id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
+            <select className="inputSelectPopUp" id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
               <option value="default">—</option>
               {groupOptions.map(group => {
                 return (
@@ -91,9 +92,9 @@ return (
               })}
             </select>
             </div>
-            <div className="labelInputPopup">
+            <div className="labelPopupInput">
               <label>Categoria da despesa</label>
-              <select onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
+              <select className="inputSelectPopUp" onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
                   <option key={0} value="default">—</option>
                   {categoryOptions.map(category => {
                       return (
@@ -107,9 +108,10 @@ return (
           </div>
 
           <div className="displayTwo">
-            <div className="labelInputPopup">
+            <div className="labelPopupInput">
               <label>Solicitante</label>
               <input
+                className="inputSelectPopUp"
                 value={expense.requester}
                 onChange={(e) =>
                   handleObjectInput({
@@ -120,21 +122,22 @@ return (
                 placeholder=""
               />
             </div>
-            <div className="labelInputPopup">
+            <div className="labelPopupInput">
               <label>Ano Fiscal</label>
               <input
                 value={expense.balanceId}
                 placeholder="2023"
                 disabled
-                className="lockedInput"
+                className="lockedInput inputSelectPopUp"
               />
             </div>
           </div>
 
           <div className="displayTwo">
-            <div className="labelInputPopup">
+            <div className="labelPopupInput">
               <label>Previsão de pagamento</label>
               <input
+                className="inputSelectPopUp"
                 value={expense.expectedPaymentDate}
                 onChange={(e) =>
                   handleObjectInput({
@@ -145,9 +148,10 @@ return (
                 type="date"
               />
             </div>
-            <div className="labelInputPopup">
+            <div className="labelPopupInput">
               <label>Valor solicitado</label>
               <NumericFormat
+                className="inputSelectPopUp"
                 value={expense.requestedValue}
                 onChange={(e) =>
                   handleMonetaryInput({
@@ -161,9 +165,10 @@ return (
             </div>
           </div>
 
-          <div className="labelInputPopup">
+          <div className="labelPopupInput">
             <label>Observação</label>
             <textarea
+              className="inputSelectPopUp"
               value={expense.observation}
               onChange={(e) =>
                 handleObjectInput({

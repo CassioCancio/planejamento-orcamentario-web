@@ -142,9 +142,11 @@ function Expense() {
             />
           </div>
           
-          <button className="submitButton" onClick={handleNewExpense}>
-            Inserir despesa
-          </button>
+          <div className="centerSubmitButton">
+            <button className="submitButton" onClick={handleNewExpense}>
+              Inserir despesa
+            </button>
+          </div>
 
       </div>
     </div>

@@ -50,9 +50,7 @@
     height: 45px;
     border: none;
     padding: 0 12px;
-    width: 25%;
-    margin: 30px auto 0 auto;
-    border-radius: 15px;
+    width: 40%;
     color: #444;
     font-weight: 400;
     transition: 0.25s;
@@ -79,3 +77,11 @@
 .lockedInput{
     background-color: #000;
 }
+
+.centerSubmitButton{
+    margin-top: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }

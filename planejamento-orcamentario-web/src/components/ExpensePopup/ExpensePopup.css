@@ -42,7 +42,8 @@
     margin: auto;
 }
 
-.labelInputPopup{
+
+.labelPopupInput{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,7 +51,7 @@
     width: 100%;
 }
 
-.labelInputPopup > input, select, textarea{
+.inputSelectPopUp {
     height: 40px;
     border-radius: 10px;
     border: none;
@@ -62,7 +63,7 @@
     outline: none;
 }
 
-.labelInputPopup > label{
+.labelPopupInput > label{
     color: #298b9c;
     font-weight: 600;
 }
