@@ -9,7 +9,7 @@ function NavBar() {
             <div className='leftNavigationBar'>
             <a href="/" className='logoNavBar'><img src={LogoReitoria} alt='logo da pró reitoria de pesquisa'/></a>
             <a href="/" className='buttonNavBar'> Home       </a>
-            <a href="/" className='buttonNavBar'> Despesas   </a>
+            <a href="/despesas" className='buttonNavBar'> Despesas   </a>
             <a href="/" className='buttonNavBar'> Receitas   </a>
             <a href="/" className='buttonNavBar'> Relatórios </a>
             </div>
