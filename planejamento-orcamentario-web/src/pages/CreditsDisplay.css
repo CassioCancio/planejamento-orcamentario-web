@@ -1,4 +1,4 @@
-.expensesTable{
+.creditsTable{
     width: 100%;
     text-align: left;
     border-collapse: collapse;
@@ -6,26 +6,26 @@
     border: 1px solid #ddd;
 }
 
-.titleLineExpense{
+.titleLineCredit{
     color: white;
     font-weight: bolder;
     font-size: 1em;
     background-color: #298b9c;
 }
 
-.titleDetalhesExpense{
+.titleDetalhesCredit{
     width: 10px;
 }
 
-.titleValorExpense{
+.titleValorCredit{
     width: 12.5%;
 }
 
-.titleGrupoExpense{
+.titleGrupoCredit{
     width: 15%;
 }
 
-.titleCategoriaExpense{
+.titleCategoriaCredit{
     width: 15%;
 }
 
@@ -35,7 +35,7 @@ th{
     padding: 8px 8px;
 }
 
-.expenseDisplayFilter{
+.creditDisplayFilter{
     background-color: #298b9c22;
     padding: 15px;
     width: 100%;

@@ -8,10 +8,10 @@ function NavBar() {
         <div className='navigationBar'>
             <div className='leftNavigationBar'>
             <a href="/" className='logoNavBar'><img src={LogoReitoria} alt='logo da pró reitoria de pesquisa'/></a>
-            <a href="/" className='buttonNavBar'> Home       </a>
-            <a href="/despesas" className='buttonNavBar'> Despesas   </a>
-            <a href="/" className='buttonNavBar'> Receitas   </a>
-            <a href="/" className='buttonNavBar'> Relatórios </a>
+            <a href="/" className='buttonNavBar'>Home       </a>
+            <a href="/despesas" className='buttonNavBar'>Despesas   </a>
+            <a href="/creditos" className='buttonNavBar'>Créditos   </a>
+            <a href="/relatorios" className='buttonNavBar'>Relatórios </a>
             </div>
 
             <div className='rightNavigationBar'>
