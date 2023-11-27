@@ -16,10 +16,10 @@ export const createNewExpense = async (expense) => {
     }
 }
 
-export const getExpensesByBalance = async (anoFiscal) => {
+export const getExpensesByBalance = async (anoFiscal, groupId = null, categoryId = null, filter = '') => {
     let expenses = [];
     try{
-        const response = await fetch('http://localhost:8080/expense/byBalance/' + anoFiscal);
+        const response = await fetch(`http://localhost:8080/expense/byBalance/${anoFiscal}?name=${filter}` + (groupId ? `&group=${groupId}`:'') + (categoryId ? `&category=${categoryId}`:''));
         if(response.ok){
             expenses = await response.json();
         } else {
