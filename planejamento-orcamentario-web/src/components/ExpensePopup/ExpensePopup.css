@@ -6,14 +6,13 @@
     top: 0;
     left: 0;
     backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popupExpense{
-    position: fixed;
-    top: 10vh;
-    left: 15%;
     border-radius: 20px;
-    height: 80vh;
     width: 70%;
     background-color: white;
     border: 1px solid #777;
@@ -28,8 +27,7 @@
 .closeIcon{
     background-color: white;
     border: none;
-    position: absolute;
-    left: 96%;
+    left: 82%;
     cursor: pointer;
 }
 
@@ -39,7 +37,8 @@
 
 .popupForm{
     width: 80%;
-    margin: auto;
+    margin: 20px auto;
+
 }
 
 

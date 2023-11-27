@@ -1,13 +1,12 @@
-import "./CreditPopup.css";
+import "./IncomePopup.css";
 import closeIcon from "../../images/close.png";
-
 import { useEffect, useState } from "react";
 import { getAllCategories } from "../../services/categoryService";
 import { getAllGroups } from "../../services/groupService";
-import { updateCredit } from "../../services/creditService";
+import { updateIncome } from "../../services/incomeService";
 import { NumericFormat } from "react-number-format";
 
-const CreditPopup = ({ credit, setCredit, setPopup }) => {
+const IncomePopup = ({ income, setIncome, setPopup }) => {
     const [categoryOptions, setCategoryOptions] = useState([]);
     const [groupOptions, setGroupOptions] = useState([]);
 
@@ -24,42 +23,42 @@ const CreditPopup = ({ credit, setCredit, setPopup }) => {
 
 
     const handleSelectId = ({name, value}) => {
-        setCredit({
-            ...credit, 
+        setIncome({
+            ...income, 
             [name]: parseInt(value)
         });
     }
 
     const handleObjectInput = ({name, value}) => {
-    setCredit({
-        ...credit, 
+    setIncome({
+        ...income, 
         [name]:value
     });
     }
 
     const handleMonetaryInput = ({name, value}) => {
-    setCredit({
-        ...credit,
+    setIncome({
+        ...income,
         [name]: parseFloat(value.replace('R$', '').trim())
     })
     }
 
     const handleClosePopup = () => {
       setPopup(false);
-      setCredit({});
+      setIncome({});
     }
 
-    const saveCredit = async () => {
-      const updated = await updateCredit(credit);
+    const saveIncome = async () => {
+      const updated = await updateIncome(income);
       if(updated){
         setPopup(false);
-        setCredit({});
+        setIncome({});
       } 
     }
 
 return (
-    <div className="backShadow">
-        <div className="popupCredit">
+    <div className="backShadow" onClick={(event) => {if (event.target === event.currentTarget) {handleClosePopup()}}}>
+        <div className="popupIncome">
             <button className="closeIcon" onClick={handleClosePopup}>
                 <img src={closeIcon} alt={"close icon"}/>
             </button>
@@ -70,7 +69,7 @@ return (
             <input
               className="inputSelectPopUp"
               type="text"
-              value={credit.name}
+              value={income.name}
               onChange={(e) =>
                 handleObjectInput({ name: "name", value: e.target.value })
               }
@@ -112,7 +111,7 @@ return (
               <label className="">Solicitante</label>
               <input
                 className="inputSelectPopUp"
-                value={credit.requester}
+                value={income.requester}
                 onChange={(e) =>
                   handleObjectInput({
                     name: "requester",
@@ -125,7 +124,7 @@ return (
             <div className="labelPopupInput">
               <label className="">Ano Fiscal</label>
               <input
-                value={credit.balanceId}
+                value={income.balanceId}
                 placeholder="2023"
                 disabled
                 className="lockedInput inputSelectPopUp"
@@ -138,7 +137,7 @@ return (
               <label className="">Previsão de pagamento</label>
               <input
                 className="inputSelectPopUp"
-                value={credit.expectedPaymentDate}
+                value={income.expectedPaymentDate}
                 onChange={(e) =>
                   handleObjectInput({
                     name: "expectedPaymentDate",
@@ -152,7 +151,7 @@ return (
               <label className="">Valor solicitado</label>
               <NumericFormat
                 className="inputSelectPopUp"
-                value={credit.requestedValue}
+                value={income.requestedValue}
                 onChange={(e) =>
                   handleMonetaryInput({
                     name: "requestedValue",
@@ -169,7 +168,7 @@ return (
             <label className="">Observação</label>
             <textarea
               className="textareaPopUp"
-              value={credit.observation}
+              value={income.observation}
               onChange={(e) =>
                 handleObjectInput({
                   name: "observation",
@@ -180,11 +179,11 @@ return (
             />
           </div>
           <div className="centerSubmitButton">
-            <button className="saveButton" onClick={saveCredit}> Salvar </button>
+            <button className="saveButton" onClick={saveIncome}> Salvar </button>
           </div>
         </div>
       </div>
     </div>
 );
 }; 
-export default CreditPopup;
+export default IncomePopup;
