@@ -1,4 +1,4 @@
-.creditsTable{
+.incomesTable{
     width: 100%;
     text-align: left;
     border-collapse: collapse;
@@ -6,26 +6,26 @@
     border: 1px solid #ddd;
 }
 
-.titleLineCredit{
+.titleLineIncome{
     color: white;
     font-weight: bolder;
     font-size: 1em;
     background-color: #298b9c;
 }
 
-.titleDetalhesCredit{
+.titleDetalhesIncome{
     width: 10px;
 }
 
-.titleValorCredit{
+.titleValueIncome{
     width: 12.5%;
 }
 
-.titleGrupoCredit{
+.titleGrupoIncome{
     width: 15%;
 }
 
-.titleCategoriaCredit{
+.titleCategoriaIncome{
     width: 15%;
 }
 
@@ -35,7 +35,7 @@ th{
     padding: 8px 8px;
 }
 
-.creditDisplayFilter{
+.incomeDisplayFilter{
     background-color: #298b9c22;
     padding: 15px;
     width: 100%;

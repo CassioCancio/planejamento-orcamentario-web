@@ -2,7 +2,7 @@
     background-color: #298b9c22;
 }
 
-.contentValorCell{
+.contentValueCell{
     display: flex;
     justify-content: space-between;
 }

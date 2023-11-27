@@ -1,11 +1,11 @@
-export const createNewCredit = async (credit) => {
+export const createNewIncome = async (income) => {
     try {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credit)
+            body: JSON.stringify(income)
         };
-        const response = await fetch('http://localhost:8080/credit', requestOptions); // TODO: variavel global
+        const response = await fetch('http://localhost:8080/income', requestOptions); // TODO: variavel global
         if(response.ok){
             window.location.href = '/';
         } else{
@@ -16,46 +16,46 @@ export const createNewCredit = async (credit) => {
     }
 }
 
-export const getCreditsByBalance = async (anoFiscal) => {
-    let credits = [];
+export const getIncomesByBalance = async (anoFiscal) => {
+    let incomes = [];
     try{
-        const response = await fetch('http://localhost:8080/credit/byBalance/' + anoFiscal);
+        const response = await fetch('http://localhost:8080/income/byBalance/' + anoFiscal);
         if(response.ok){
-            credits = await response.json();
+            incomes = await response.json();
         } else {
             throw new Error("Erro ao buscar despensas do ano fiscal" + anoFiscal)
         }
     } catch (error) {
         console.error(error);
     } finally {
-        return credits;
+        return incomes;
     }
 }
 
-export const getCreditById = async (id) => {
-    let credit = null;
+export const getIncomeById = async (id) => {
+    let income = null;
     try{
-        const response = await fetch('http://localhost:8080/credit/'+ id)
+        const response = await fetch('http://localhost:8080/income/'+ id)
         if(response.ok){
-            credit = await response.json();
+            income = await response.json();
         } else {
             throw new Error("Erro ao busca crédito com id " + id)
         }
     } catch (error) {
         console.error(error);
     } finally {
-        return credit;
+        return income;
     }
 }
 
-export const updateCredit = async (credit) => {
+export const updateIncome = async (income) => {
     try{
         const requestOptions = {
             method: "PUT",
             headers: { "Content-Type" : "application/json"},
-            body: JSON.stringify(credit)
+            body: JSON.stringify(income)
         };
-        const response = await fetch("http://localhost:8080/credit", requestOptions);
+        const response = await fetch("http://localhost:8080/income", requestOptions);
         if(response.ok){
             return true;
         } else {

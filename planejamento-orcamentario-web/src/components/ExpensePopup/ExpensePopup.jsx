@@ -58,7 +58,7 @@ const ExpensePopup = ({ expense, setExpense, setPopup }) => {
     }
 
 return (
-    <div className="backShadow">
+    <div className="backShadow" onClick={(event) => {if (event.target === event.currentTarget) {handleClosePopup()}}}>
         <div className="popupExpense">
             <button className="closeIcon" onClick={handleClosePopup}>
                 <img src={closeIcon} alt={"close icon"}/>

@@ -5,8 +5,8 @@ const LineCells = ({ expense, handleOnClick }) => {
             <td className="contentCellExpense">{expense.group.id} - {expense.group.name}</td>
             <td className="contentCellExpense">{expense.name}</td>
             <td className="contentCellExpense">{expense.categoryName}</td>
-            <td className="contentCellExpense"><div className="contentValorCell"><div>R$</div><div>{expense.requestedValue}</div></div></td>
-            <td className="contentCellExpense"><div className="contentValorCell"><div>R$</div><div>{expense.paidValue}</div></div></td>
+            <td className="contentCellExpense"><div className="contentValueCell"><div>R$</div><div>{expense.requestedValue}</div></div></td>
+            <td className="contentCellExpense"><div className="contentValueCell"><div>R$</div><div>{expense.paidValue}</div></div></td>
             <td className="contentCellExpense"><button onClick={() => handleOnClick(expense.id)}>i</button></td>
         </>
     )

@@ -45,8 +45,8 @@ const ExpensesDisplay = () => {
           <th className="titleGrupoExpense">Grupo</th>
           <th className="titleNomeExpense">Nome</th>
           <th className="titleCategoriaExpense">Categoria</th>
-          <th className="titleValorExpense">Valor Solicitado</th>
-          <th className="titleValorExpense">Valor Pago</th>
+          <th className="titleValueExpense">Valor Solicitado</th>
+          <th className="titleValueExpense">Valor Pago</th>
           <th className="titleDetalhesExpense"></th>
         </tr>
 
