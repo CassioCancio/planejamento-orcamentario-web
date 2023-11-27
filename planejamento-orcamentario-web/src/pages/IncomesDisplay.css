@@ -1,4 +1,4 @@
-.incomesTable{
+.creditsTable{
     width: 100%;
     text-align: left;
     border-collapse: collapse;
@@ -6,26 +6,26 @@
     border: 1px solid #ddd;
 }
 
-.titleLineIncome{
+.titleLineCredit{
     color: white;
     font-weight: bolder;
     font-size: 1em;
     background-color: #298b9c;
 }
 
-.titleDetalhesIncome{
+.titleDetalhesCredit{
     width: 10px;
 }
 
-.titleValueIncome{
+.titleValorCredit{
     width: 12.5%;
 }
 
-.titleGrupoIncome{
+.titleGrupoCredit{
     width: 15%;
 }
 
-.titleCategoriaIncome{
+.titleCategoriaCredit{
     width: 15%;
 }
 
@@ -33,64 +33,4 @@ th{
     /* border: 1px solid black; */
     border-left: 1px solid #ddd;
     padding: 8px 8px;
-}
-
-.incomeDisplayFilter{
-    background-color: #298b9c22;
-    padding: 15px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    margin-bottom: 40px;
-    border: 1px solid #ddd;
-}
-
-
-
-
-.labelFilter{
-    display: flex;
-    flex-direction: column;
-    
-}
-
-.displayFilterField1{
-    width: 45%;
-}
-
-.displayFilterField2{
-    width: 20%;
-}
-
-.displayFilterField3{
-    width: 20%;
-}
-
-.displayFilterField4{
-    width: 10%;
-}
-
-.labelFilter > input, select{
-    height: 40px;
-    margin: 10px 0 0 0;
-    border: none;
-    border: 1px solid #ddd;
-    background-color: white;
-}
-
-.labelFilter > button{
-    background-color: #298b9c;
-    border: none;
-    border: 1px solid #ddd;
-    color: white;
-    height: 40px;
-    margin: 10px 0 0 0;
-}
-
-.labelFilter > label {
-    font-size: 1em;
-    font-weight: bold;
-    height: 20px;
 }

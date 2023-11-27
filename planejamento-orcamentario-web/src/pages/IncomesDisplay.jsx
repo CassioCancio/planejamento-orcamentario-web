@@ -1,58 +1,58 @@
-import { useState } from "react";
-import TableLine from "../components/IncomeTableLine/TableLine";
-import { getIncomeById } from "../services/incomeService";
 import "./IncomesDisplay.css";
+
+import { useEffect, useState } from "react";
+
+import TableLine from "../components/DisplayTable/Table";
 import IncomePopup from "../components/IncomePopup/IncomePopup";
+import LineCells from "../components/DisplayTable/CreditLineCells";
+import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
+import { getIncomeById, getIncomesByBalance } from "../services/incomeService";
 
 const IncomesDisplay = () => {
-  const [incomePopup, setIncomePopup] = useState(false);
+  const [creditPopup, setCreditPopup] = useState(false);
   const [selectedIncome, setSelectedIncome] = useState({}); // criar objeto default
+  const [incomes, setIncomes] = useState([]);
 
-  const handleSelectIncome = async (id) => {
+  useEffect(() => {
+    const fetchBalanceData = (async () => {
+      const balanceCredits = await getIncomesByBalance(2023); // TODO: trocar 2023
+      setIncomes(balanceCredits);
+    });
+
+    fetchBalanceData();
+  },[])
+
+  const handleSelectCredit = async (id) => {
     const income = await getIncomeById(id);
     if(income != null){
-      setIncomePopup(true);
+      setCreditPopup(true);
       setSelectedIncome(income);
     }
+  }
+
+  const handleFilter = async (filter) => {
+    const balanceExpenses = await getIncomesByBalance(2023, filter.groupId, filter.name); // TODO: trocar 2023
+    setIncomes(balanceExpenses);
   }
 
   return (
     <div className="mainMargin">
       <h1>Créditos registrados</h1>
-      <div className="incomeDisplayFilter">
-        <div className="labelFilter displayFilterField1">
-          <label>Nome</label>
-          <input/>
-        </div>
-        <div className="labelFilter displayFilterField2">
-          <label>Grupo</label>
-          <select>
 
-          </select>
-        </div>
-        <div className="labelFilter displayFilterField3">
-          <label>Categoria</label>
-          <select>
-          </select>
-        </div>
-        <div className="labelFilter displayFilterField4">
-          <label></label>
-          <button>Buscar</button>
-        </div>
-      </div>
-      
-      <table className="incomesTable">
-        <tr className="titleLineIncome">
-          <th className="titleGrupoIncome">Grupo</th>
-          <th className="titleNomeIncome">Nome</th>
-          <th className="titleCategoriaIncome">Categoria</th>
-          <th className="titleValueIncome">Valor</th>
-          <th className="titleDetalhesIncome"></th>
+      <DisplayFilter handleFilter={handleFilter}/>
+
+      <table className="creditsTable">
+        <tr className="titleLineCredit">
+          <th className="titleGrupoCredit">Grupo</th>
+          <th className="titleNomeCredit">Nome</th>
+          <th className="titleCategoriaCredit">Categoria</th>
+          <th className="titleValorCredit">Valor</th>
+          <th className="titleDetalhesCredit"></th>
         </tr>
 
-        <TableLine handleSelectIncome={handleSelectIncome}/>
+        <TableLine handleSelectItem={handleSelectCredit} list={incomes} LineCells={LineCells}/>
 
-        {incomePopup && <IncomePopup income={selectedIncome} setIncome={setSelectedIncome} setPopup={setIncomePopup}/>}
+        {creditPopup && <IncomePopup income={selectedIncome} setIncome={setSelectedIncome} setPopup={setCreditPopup}/>}
       </table>
     </div>
   );

@@ -7,16 +7,12 @@ import { updateIncome } from "../../services/incomeService";
 import { NumericFormat } from "react-number-format";
 
 const IncomePopup = ({ income, setIncome, setPopup }) => {
-    const [categoryOptions, setCategoryOptions] = useState([]);
     const [groupOptions, setGroupOptions] = useState([]);
 
     useEffect(() => {
     const fetchSelectsData = (async () => {
-    const categories = await getAllCategories();
-    setCategoryOptions(categories);
-
-    const groups = await getAllGroups();
-    setGroupOptions(groups);
+      const groups = await getAllGroups();
+      setGroupOptions(groups);
     });
     fetchSelectsData();
     },[])
@@ -91,40 +87,11 @@ return (
               })}
             </select>
             </div>
-            <div className="labelPopupInput">
-              <label className="">Categoria do crédito</label>
-              <select className="inputSelectPopUp" onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
-                  <option key={0} value="default">—</option>
-                  {categoryOptions.map(category => {
-                      return (
-                          <option key={category.key} value={category.id}>
-                          {category.name}
-                          </option>
-                      )
-                  })}
-              </select>
-            </div>
-          </div>
 
-          <div className="displayTwo">
-            <div className="labelPopupInput">
-              <label className="">Solicitante</label>
-              <input
-                className="inputSelectPopUp"
-                value={income.requester}
-                onChange={(e) =>
-                  handleObjectInput({
-                    name: "requester",
-                    value: e.target.value,
-                  })
-                }
-                placeholder=""
-              />
-            </div>
             <div className="labelPopupInput">
               <label className="">Ano Fiscal</label>
               <input
-                value={income.balanceId}
+                value={income.balance.year}
                 placeholder="2023"
                 disabled
                 className="lockedInput inputSelectPopUp"
@@ -134,27 +101,28 @@ return (
 
           <div className="displayTwo">
             <div className="labelPopupInput">
-              <label className="">Previsão de pagamento</label>
+              <label className="">Data Criação</label>
               <input
                 className="inputSelectPopUp"
-                value={income.expectedPaymentDate}
+                value={income.creationDate}
+                disabled={true}
                 onChange={(e) =>
                   handleObjectInput({
-                    name: "expectedPaymentDate",
+                    name: "creationDate",
                     value: e.target.value,
                   })
                 }
                 type="date"
               />
             </div>
-            <div className="labelPopupInput">
-              <label className="">Valor solicitado</label>
+          <div className="labelPopupInput">
+              <label className="">Valor</label>
               <NumericFormat
                 className="inputSelectPopUp"
-                value={income.requestedValue}
+                value={income.value}
                 onChange={(e) =>
                   handleMonetaryInput({
-                    name: "requestedValue",
+                    name: "value",
                     value: e.target.value,
                   })
                 }
