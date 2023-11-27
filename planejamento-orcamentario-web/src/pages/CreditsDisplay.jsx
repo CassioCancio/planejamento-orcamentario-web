@@ -1,12 +1,26 @@
-import { useState } from "react";
-import TableLine from "../components/CreditTableLine/TableLine";
-import { getCreditById } from "../services/creditService";
 import "./CreditsDisplay.css";
+
+import { useEffect, useState } from "react";
+
+import TableLine from "../components/DisplayTable/Table";
+import { getCreditById, getCreditsByBalance } from "../services/creditService";
 import CreditPopup from "../components/CreditPopup/CreditPopup";
+import LineCells from "../components/DisplayTable/CreditLineCells";
+import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
 
 const CreditsDisplay = () => {
   const [creditPopup, setCreditPopup] = useState(false);
   const [selectedCredit, setSelectedCredit] = useState({}); // criar objeto default
+  const [credits, setCredits] = useState([]);
+
+  useEffect(() => {
+    const fetchBalanceData = (async () => {
+      const balanceCredits = await getCreditsByBalance(2023); // TODO: trocar 2023
+      setCredits(balanceCredits);
+    });
+    
+    fetchBalanceData();
+  },[])
 
   const handleSelectCredit = async (id) => {
     const credit = await getCreditById(id);
@@ -15,30 +29,17 @@ const CreditsDisplay = () => {
       setSelectedCredit(credit);
     }
   }
+
+  const handleFilter = async (filter) => {
+    const balanceExpenses = await getCreditsByBalance(2023, filter.groupId, filter.name); // TODO: trocar 2023
+    setCredits(balanceExpenses);
+  }
+
   return (
     <div className="mainMargin">
       <h1>Créditos registrados</h1>
-      <div className="creditDisplayFilter">
-        <div className="labelFilter displayFilterField1">
-          <label>Nome</label>
-          <input/>
-        </div>
-        <div className="labelFilter displayFilterField2">
-          <label>Grupo</label>
-          <select>
-
-          </select>
-        </div>
-        <div className="labelFilter displayFilterField3">
-          <label>Categoria</label>
-          <select>
-          </select>
-        </div>
-        <div className="labelFilter displayFilterField4">
-          <label></label>
-          <button>Buscar</button>
-        </div>
-      </div>
+      
+      <DisplayFilter handleFilter={handleFilter}/>
       
       <table className="creditsTable">
         <tr className="titleLineCredit">
@@ -49,7 +50,7 @@ const CreditsDisplay = () => {
           <th className="titleDetalhesCredit"></th>
         </tr>
 
-        <TableLine handleSelectCredit={handleSelectCredit}/>
+        <TableLine handleSelectItem={handleSelectCredit} list={credits} LineCells={LineCells}/>
 
         {creditPopup && <CreditPopup credit={selectedCredit} setCredit={setSelectedCredit} setPopup={setCreditPopup}/>}
       </table>
