@@ -1,20 +1,19 @@
-import "./TableLine.css";
-import LineCells from "./LineCells";
+import "./Table.css";
 
-const TableLine = ({ handleSelectExpense, expenses }) => {
+const TableLine = ({ handleSelectItem, list, LineCells }) => {
     return (
         <>
-            {expenses.map((expense, index) => {
+            {list.map((item, index) => {
                 if(index % 2 === 0) {
                     return(
                         <tr className="contentWhiteLineExpense">
-                            <LineCells expense={expense} handleOnClick={handleSelectExpense}/>
+                            <LineCells item={item} handleOnClick={handleSelectItem}/>
                         </tr>
                     )
                 } else {
                     return(
                         <tr className="contentGrayLineExpense">
-                            <LineCells expense={expense} handleOnClick={handleSelectExpense}/>
+                            <LineCells item={item} handleOnClick={handleSelectItem}/>
                         </tr>
                     )
                 }
