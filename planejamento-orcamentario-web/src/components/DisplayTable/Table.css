@@ -1,4 +1,4 @@
-.contentGrayLineExpense{
+.contentGrayLine{
     background-color: #298b9c22;
 }
 
@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 
 td{
     border-left: 1px solid #ddd;

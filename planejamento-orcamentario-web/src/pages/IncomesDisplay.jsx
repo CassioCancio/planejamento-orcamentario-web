@@ -1,12 +1,14 @@
 import "./IncomesDisplay.css";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import TableLine from "../components/DisplayTable/Table";
 import IncomePopup from "../components/IncomePopup/IncomePopup";
 import LineCells from "../components/DisplayTable/CreditLineCells";
 import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
 import { getIncomeById, getIncomesByBalance } from "../services/incomeService";
+import addIcon from "../images/plus.png"
 
 const IncomesDisplay = () => {
   const [creditPopup, setCreditPopup] = useState(false);
@@ -35,9 +37,19 @@ const IncomesDisplay = () => {
     setIncomes(balanceExpenses);
   }
 
+  const navigate = useNavigate(); 
+  
+  const handleCreateNewExpense = () => {
+    navigate(`/criacao-credito`);
+  }
+
   return (
     <div className="mainMargin">
-      <h1>Créditos registrados</h1>
+      
+      <div className="creditTitleAdd">
+        <h1>Créditos registrados</h1>
+        <button onClick={handleCreateNewExpense} className="creditAddButton"><img src={addIcon} alt="Ícone de adição"/>Adicionar</button>
+      </div>
 
       <DisplayFilter handleFilter={handleFilter}/>
 
@@ -45,7 +57,6 @@ const IncomesDisplay = () => {
         <tr className="titleLineCredit">
           <th className="titleGrupoCredit">Grupo</th>
           <th className="titleNomeCredit">Nome</th>
-          <th className="titleCategoriaCredit">Categoria</th>
           <th className="titleValorCredit">Valor</th>
           <th className="titleDetalhesCredit"></th>
         </tr>

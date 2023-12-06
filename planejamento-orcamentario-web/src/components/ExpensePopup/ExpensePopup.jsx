@@ -125,7 +125,7 @@ return (
             <div className="labelPopupInput">
               <label className="">Ano Fiscal</label>
               <input
-                value={expense.balanceId}
+                value={expense.balance.year}
                 placeholder="2023"
                 disabled
                 className="lockedInput inputSelectPopUp"

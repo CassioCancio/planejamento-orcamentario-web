@@ -1,11 +1,14 @@
 import "./ExpensesDisplay.css";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import TableLine from "../components/DisplayTable/Table";
 import { getExpenseById, getExpensesByBalance } from "../services/expenseService";
 import ExpensePopup from "../components/ExpensePopup/ExpensePopup";
 import LineCells from "../components/DisplayTable/ExpenseLineCells";
 import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
+import addIcon from "../images/plus.png"
 
 const ExpensesDisplay = () => {
   const [expensePopup, setExpensePopup] = useState(false);
@@ -33,9 +36,19 @@ const ExpensesDisplay = () => {
     setExpenses(balanceExpenses);
   }
 
+  const navigate = useNavigate(); 
+
+  const handleCreateNewExpense = () => {
+    navigate(`/criacao-despesa`);
+  }
+
   return (
     <div className="mainMargin">
-      <h1>Despesas registradas</h1>
+
+      <div className="expenseTitleAdd">
+        <h1>Despesas registradas</h1>
+        <button onClick={handleCreateNewExpense} className="expenseAddButton"><img src={addIcon} alt="Ícone de adição"/>Adicionar</button>
+      </div>
       
       <DisplayFilter handleFilter={handleFilter}/>
 

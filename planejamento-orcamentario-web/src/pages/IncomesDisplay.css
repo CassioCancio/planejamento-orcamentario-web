@@ -34,3 +34,28 @@ th{
     border-left: 1px solid #ddd;
     padding: 8px 8px;
 }
+
+.creditTitleAdd{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.creditAddButton{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    height: 40px;
+    width: 120px;
+    border: none;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #298b9c;
+    color: white;
+}
+
+.creditAddButton > img{
+    width: 15px;
+}

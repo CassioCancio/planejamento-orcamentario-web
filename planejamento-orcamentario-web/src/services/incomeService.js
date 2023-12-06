@@ -7,7 +7,7 @@ export const createNewIncome = async (income) => {
         };
         const response = await fetch('http://localhost:8080/income', requestOptions); // TODO: variavel global
         if(response.ok){
-            window.location.href = '/';
+            window.location.href = '/creditos';
         } else{
             throw new Error("Falha ao criar crédito");
         }

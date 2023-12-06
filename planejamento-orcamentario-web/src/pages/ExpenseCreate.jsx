@@ -105,7 +105,7 @@ function Expense() {
             <div className="labelInput">
               <label>Ano Fiscal</label>
               <input 
-                value={expense.balanceId}
+                value={expense.balanceYear}
                 placeholder="2023" 
                 disabled 
                 className="lockedInput"

@@ -7,7 +7,7 @@ export const createNewExpense = async (expense) => {
         };
         const response = await fetch('http://localhost:8080/expense', requestOptions); // TODO: variavel global
         if(response.ok){
-            window.location.href = '/';
+            window.location.href = '/despesas';
         } else{
             throw new Error("Falha ao criar despesa");
         }
