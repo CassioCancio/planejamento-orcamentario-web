@@ -1,0 +1,50 @@
+@media print {
+    @page {
+        margin-top: 2cm;
+    }
+
+    .no-print {
+        display: none;
+    }
+}
+
+.graphReport{
+    width: 49%;
+    background-color: white;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px #ddd;
+    border-radius: 5px;
+}
+
+.graphTextReport{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textReport{
+    text-align: left;
+    width: 47%;
+    padding-top: 10px;
+}
+
+.textReport > p{
+    margin: 0 0 30px 0;
+    font-size: 1.2em;
+}
+
+.groupReport{
+    margin: 20px 0;
+}
+
+.groupReport > h2{
+    margin: 30px 0 20px 0;
+    color: #298b9c;
+}
+
+.stylePreValue{
+    font-weight: bolder;
+}
