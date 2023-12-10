@@ -2,7 +2,7 @@ import "./Table.css";
 const ExpenseLineCells = ({ item, handleOnClick }) => {
     return(
         <>
-            <td className="contentCellExpense">{item.group.id} - {item.group.name}</td>
+            <td className="contentCellExpense">{item.group.number} - {item.group.name}</td>
             <td className="contentCellExpense">{item.name}</td>
             <td className="contentCellExpense">{item.category.name}</td>
             <td className="contentCellExpense"><div className="contentValueCell"><div>R$</div><div>{item.requestedValue}</div></div></td>

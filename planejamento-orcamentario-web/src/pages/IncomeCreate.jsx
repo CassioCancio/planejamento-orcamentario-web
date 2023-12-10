@@ -34,9 +34,10 @@ function Income() {
   }
 
   const handleMonetaryInput = ({name, value}) => {
+    const formattedValue = value.replace(/\./g, '').replace(",", ".");
     setIncome({
-      ...income,
-      [name]: parseFloat(value.replace('R$', '').trim())
+        ...income,
+        [name]: parseFloat(formattedValue.replace('R$ ', '').trim())
     })
   }
 
@@ -90,7 +91,8 @@ function Income() {
               <NumericFormat 
                 value={income.value} 
                 onChange={(e) => handleMonetaryInput({ name:'value', value: e.target.value })} 
-                thousandSeparator={true} 
+                thousandSeparator={'.'}
+                decimalSeparator="," 
                 prefix={'R$ '} 
               />
             </div>

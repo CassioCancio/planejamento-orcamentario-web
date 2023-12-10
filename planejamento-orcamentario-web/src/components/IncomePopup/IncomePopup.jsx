@@ -1,12 +1,11 @@
 import "./IncomePopup.css";
 import closeIcon from "../../images/close.png";
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../../services/categoryService";
 import { getAllGroups } from "../../services/groupService";
 import { updateIncome } from "../../services/incomeService";
 import { NumericFormat } from "react-number-format";
 
-const IncomePopup = ({ income, setIncome, setPopup }) => {
+const IncomePopup = ({ income, setIncome, setPopup, setUpdatePage, updatePage }) => {
     const [groupOptions, setGroupOptions] = useState([]);
 
     useEffect(() => {
@@ -33,10 +32,11 @@ const IncomePopup = ({ income, setIncome, setPopup }) => {
     }
 
     const handleMonetaryInput = ({name, value}) => {
-    setIncome({
-        ...income,
-        [name]: parseFloat(value.replace('R$', '').trim())
-    })
+      const formattedValue = value.replace(/\./g, '').replace(",", ".");
+      setIncome({
+          ...income,
+          [name]: parseFloat(formattedValue.replace('R$ ', '').trim())
+      })
     }
 
     const handleClosePopup = () => {
@@ -45,8 +45,10 @@ const IncomePopup = ({ income, setIncome, setPopup }) => {
     }
 
     const saveIncome = async () => {
+      income.creationDate = (new Date(income.creationDate)).toISOString();
       const updated = await updateIncome(income);
       if(updated){
+        setUpdatePage(updatePage+1);
         setPopup(false);
         setIncome({});
       } 
@@ -61,7 +63,7 @@ return (
 
         <div className="popupForm">
           <div className="labelPopupInput">
-            <label className="">Nome</label>
+            <label className="">Nome do Crédito</label>
             <input
               className="inputSelectPopUp"
               type="text"
@@ -76,7 +78,7 @@ return (
           <div className="displayTwo">
           <div className="labelPopupInput">
             <label className="">Grupo do crédito</label>
-            <select className="inputSelectPopUp" id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
+            <select className="inputSelectPopUp" id="selectGroup" value={income.group.id} onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
               <option value="default">—</option>
               {groupOptions.map(group => {
                 return (
@@ -126,7 +128,8 @@ return (
                     value: e.target.value,
                   })
                 }
-                thousandSeparator={true}
+                thousandSeparator={'.'}
+                decimalSeparator=","
                 prefix={"R$ "}
               />
             </div>

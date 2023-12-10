@@ -31,9 +31,8 @@ const ReportsDisplay = () => {
   return (
     <div className="mainMargin">
       <div id="pdf-content">
-      <h1>Relatório</h1>
 
-      <h2>Geral</h2>
+      <h1>Geral</h1>
         <div className="graphTextReport">
           <div className="graphReport"><ReportGraph data={[generalBalance.totalCredits, generalBalance.totalProvisionated, generalBalance.totalPaid, generalBalance.totalCredits - generalBalance.totalProvisionated]}/></div>
           <div className="textReport">
@@ -44,11 +43,11 @@ const ReportsDisplay = () => {
             <p><span className="stylePreValue">Saldo:</span> R${generalBalance.totalCredits - generalBalance.totalProvisionated}</p>
           </div>
       </div>
-      <h2>Por grupo</h2>
+      <h1>Por Grupo</h1>
       {groupsBalance.map(group =>{
         return (
           <div className="groupReport">
-            <h2>{group.name}</h2>
+            <h2> {group.number} - {group.name}</h2>
             <div className="graphTextReport">
               <div className="graphReport"><ReportGraph data={[group.totalCredits, group.totalProvisionated, group.totalPaid, group.totalCredits - group.totalProvisionated]}/></div>
               <div className="textReport">
@@ -60,7 +59,7 @@ const ReportsDisplay = () => {
               </div>
             </div>
 
-            <h2>Depesas</h2>
+            <h3>Depesas</h3>
 
             <table className="expensesTable">
               <tr className="titleLineExpense">
@@ -79,7 +78,7 @@ const ReportsDisplay = () => {
                   />
             </table>
 
-            <h2>Créditos</h2>
+            <h3>Créditos</h3>
             
             <table className="creditsTable">
               <tr className="titleLineCredit">

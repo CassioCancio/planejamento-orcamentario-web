@@ -39,9 +39,10 @@ function Expense() {
   }
 
   const handleMonetaryInput = ({name, value}) => {
+    const formattedValue = value.replace(/\./g, '').replace(",", ".");
     setExpense({
-      ...expense,
-      [name]: parseFloat(value.replace('R$', '').trim())
+        ...expense,
+        [name]: parseFloat(formattedValue.replace('R$ ', '').trim())
     })
   }
 
@@ -127,7 +128,8 @@ function Expense() {
               <NumericFormat 
                 value={expense.requestedValue} 
                 onChange={(e) => handleMonetaryInput({ name:'requestedValue', value: e.target.value })} 
-                thousandSeparator={true} 
+                thousandSeparator={'.'}
+                decimalSeparator="," 
                 prefix={'R$ '} 
               />
             </div>

@@ -14,6 +14,7 @@ const IncomesDisplay = () => {
   const [creditPopup, setCreditPopup] = useState(false);
   const [selectedIncome, setSelectedIncome] = useState({}); // criar objeto default
   const [incomes, setIncomes] = useState([]);
+  const [updatePage, setUpdatePage] = useState(0);
 
   useEffect(() => {
     const fetchBalanceData = (async () => {
@@ -22,11 +23,13 @@ const IncomesDisplay = () => {
     });
 
     fetchBalanceData();
-  },[])
+  },[updatePage])
 
   const handleSelectCredit = async (id) => {
     const income = await getIncomeById(id);
     if(income != null){
+      let formattedCreationDate = new Date(income.creationDate);
+      income.creationDate = formattedCreationDate.toISOString().split('T')[0];
       setCreditPopup(true);
       setSelectedIncome(income);
     }
@@ -63,7 +66,7 @@ const IncomesDisplay = () => {
 
         <TableLine handleSelectItem={handleSelectCredit} list={incomes} LineCells={LineCells}/>
 
-        {creditPopup && <IncomePopup income={selectedIncome} setIncome={setSelectedIncome} setPopup={setCreditPopup}/>}
+        {creditPopup && <IncomePopup setUpdatePage={setUpdatePage} updatePage={updatePage} income={selectedIncome} setIncome={setSelectedIncome} setPopup={setCreditPopup}/>}
       </table>
     </div>
   );

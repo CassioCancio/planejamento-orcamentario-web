@@ -7,7 +7,7 @@ import { getAllGroups } from "../../services/groupService";
 import { updateExpense } from "../../services/expenseService";
 import { NumericFormat } from "react-number-format";
 
-const ExpensePopup = ({ expense, setExpense, setPopup }) => {
+const ExpensePopup = ({ expense, setExpense, setPopup, setUpdatePage, updatePage }) => {
     const [categoryOptions, setCategoryOptions] = useState([]);
     const [groupOptions, setGroupOptions] = useState([]);
 
@@ -38,10 +38,11 @@ const ExpensePopup = ({ expense, setExpense, setPopup }) => {
     }
 
     const handleMonetaryInput = ({name, value}) => {
-    setExpense({
-        ...expense,
-        [name]: parseFloat(value.replace('R$', '').trim())
-    })
+      const formattedValue = value.replace(/\./g, '').replace(",", ".");
+      setExpense({
+          ...expense,
+          [name]: parseFloat(formattedValue.replace('R$ ', '').trim())
+      })
     }
 
     const handleClosePopup = () => {
@@ -50,8 +51,10 @@ const ExpensePopup = ({ expense, setExpense, setPopup }) => {
     }
 
     const saveExpense = async () => {
+      expense.expectedPaymentDate = (new Date(expense.expectedPaymentDate)).toISOString();
       const updated = await updateExpense(expense);
       if(updated){
+        setUpdatePage(updatePage+1);
         setPopup(false);
         setExpense({});
       } 
@@ -66,7 +69,7 @@ return (
 
         <div className="popupForm">
           <div className="labelPopupInput">
-            <label className="">Nome</label>
+            <label className="">Nome da Despesa</label>
             <input
               className="inputSelectPopUp"
               type="text"
@@ -81,8 +84,7 @@ return (
           <div className="displayTwo">
           <div className="labelPopupInput">
             <label className="">Grupo da Despesa</label>
-            <select className="inputSelectPopUp" id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
-              <option value="default">—</option>
+            <select className="inputSelectPopUp" value={expense.group.id} id="selectGroup" onChange={(e) => handleSelectId({name: 'groupId', value: e.target.value })}>
               {groupOptions.map(group => {
                 return (
                   <option key={group.key} value={group.id}>
@@ -94,8 +96,7 @@ return (
             </div>
             <div className="labelPopupInput">
               <label className="">Categoria da despesa</label>
-              <select className="inputSelectPopUp" onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
-                  <option key={0} value="default">—</option>
+              <select className="inputSelectPopUp" value={expense.category.id} onChange={(e) => handleSelectId({name: 'categoryId', value: e.target.value })}>
                   {categoryOptions.map(category => {
                       return (
                           <option key={category.key} value={category.id}>
@@ -159,10 +160,47 @@ return (
                     value: e.target.value,
                   })
                 }
-                thousandSeparator={true}
+                thousandSeparator={'.'}
+                decimalSeparator={','}
                 prefix={"R$ "}
               />
             </div>
+          </div>
+
+          <div className="displayTwo">
+            <div className="labelPopupInput">
+            <label className="">Valor Provisionado</label>
+                <NumericFormat
+                  className="inputSelectPopUp"
+                  value={expense.provisionedValue}
+                  onChange={(e) =>
+                    handleMonetaryInput({
+                      name: "provisionedValue",
+                      value: e.target.value,
+                    })
+                  }
+                  thousandSeparator={'.'}
+                  decimalSeparator={','}
+                  prefix={"R$ "}
+                />
+              </div>
+
+              <div className="labelPopupInput">
+            <label className="">Valor Pago</label>
+                <NumericFormat
+                  className="inputSelectPopUp"
+                  value={expense.paidValue}
+                  onChange={(e) =>
+                    handleMonetaryInput({
+                      name: "paidValue",
+                      value: e.target.value,
+                    })
+                  }
+                  thousandSeparator={'.'}
+                  decimalSeparator={','}
+                  prefix={"R$ "}
+                />
+              </div>
           </div>
 
           <div className="labelPopupInput">

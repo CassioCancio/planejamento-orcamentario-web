@@ -5,7 +5,7 @@ const ReportGraph = ({data}) => {
   const options = {
     chart: {
       type: 'bar',
-      height: 350
+      height: 350,
     },
     plotOptions: {
       bar: {
@@ -47,7 +47,7 @@ const ReportGraph = ({data}) => {
   }];
 
   return (
-    <ReactApexChart options={options} series={series} type="bar" height={350} />
+    <ReactApexChart options={options} series={series} type="bar" height={370} width={500} />
   );
 };
 

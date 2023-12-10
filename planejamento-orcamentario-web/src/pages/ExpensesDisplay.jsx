@@ -14,6 +14,7 @@ const ExpensesDisplay = () => {
   const [expensePopup, setExpensePopup] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState({}); // criar objeto default
   const [expenses, setExpenses] = useState([]);
+  const [updatePage, setUpdatePage] = useState(0);
 
   useEffect(() => {
     const fetchDisplayData = (async () => {
@@ -21,11 +22,13 @@ const ExpensesDisplay = () => {
       setExpenses(balanceExpenses);
     });
     fetchDisplayData();
-  },[])
-
+  },[updatePage])
+  
   const handleSelectExpense = async (id) => {
     const expense = await getExpenseById(id);
     if(expense != null){
+      let formattedPaymentDate = new Date(expense.expectedPaymentDate);
+      expense.expectedPaymentDate = formattedPaymentDate.toISOString().split('T')[0];
       setExpensePopup(true);
       setSelectedExpense(expense);
     }
@@ -64,7 +67,7 @@ const ExpensesDisplay = () => {
 
         <TableLine handleSelectItem={handleSelectExpense} list={expenses} LineCells={LineCells}/>
 
-        {expensePopup && <ExpensePopup expense={selectedExpense} setExpense={setSelectedExpense} setPopup={setExpensePopup}/>}
+        {expensePopup && <ExpensePopup setUpdatePage={setUpdatePage} updatePage={updatePage} expense={selectedExpense} setExpense={setSelectedExpense} setPopup={setExpensePopup}/>}
       </table>
     </div>
   );
