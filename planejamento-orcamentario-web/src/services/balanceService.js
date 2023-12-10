@@ -5,6 +5,7 @@ export const getAllGroupsBalance = async (balanceYear) => {
         if(response.ok){
             groupsBalance = await response.json();
         } else {
+            window.alert("Não foi possível consultar o balanço por grupo de " + balanceYear);
             throw new Error("Erro ao consultar balanço dos grupos")
         }
     } catch (error) {
@@ -21,6 +22,7 @@ export const getGeneralBalance = async (balanceYear) => {
         if(response.ok){
             generalBalance = await response.json();
         } else {
+            window.alert("Não foi possível consultar o balanço de " + balanceYear);
             throw new Error("Erro ao consultar balanço geral")
         }
     } catch (error) {

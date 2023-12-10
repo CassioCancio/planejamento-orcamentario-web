@@ -9,6 +9,7 @@ export const createNewExpense = async (expense) => {
         if(response.ok){
             window.location.href = '/despesas';
         } else{
+            window.alert("Não foi possível criar despesa");
             throw new Error("Falha ao criar despesa");
         }
     } catch (error) {
@@ -23,6 +24,7 @@ export const getExpensesByBalance = async (anoFiscal, groupId = null, categoryId
         if(response.ok){
             expenses = await response.json();
         } else {
+            window.alert("Falha ao consultar despesas");
             throw new Error("Erro ao buscar despensas do ano fiscal" + anoFiscal)
         }
     } catch (error) {
@@ -39,6 +41,7 @@ export const getExpenseById = async (id) => {
         if(response.ok){
             expense = await response.json();
         } else {
+            window.alert("Falha ao buscar despesa");
             throw new Error("Erro ao busca despesa com id " + id)
         }
     } catch (error) {
@@ -59,6 +62,7 @@ export const updateExpense = async (expense) => {
         if(response.ok){
             return true;
         } else {
+            window.alert("Não foi possível editar despesa");
             throw new Error("Falha ao editar despesa");
         } 
     } catch (error) {
@@ -79,6 +83,7 @@ export const deleteExpense = async (expenseId) => {
         if(response.ok){
             removed = true;
         } else {
+            window.alert("Não foi possível excluir despesa");
             throw new Error("Failed to remove expense with id " + expenseId);
         }
     } catch (error) {

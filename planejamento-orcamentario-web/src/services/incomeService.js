@@ -9,6 +9,7 @@ export const createNewIncome = async (income) => {
         if(response.ok){
             window.location.href = '/creditos';
         } else{
+            window.alert("Não foi possível criar crédito");
             throw new Error("Falha ao criar crédito");
         }
     } catch (error) {
@@ -23,6 +24,7 @@ export const getIncomesByBalance = async (anoFiscal, groupId = null, filter = ''
         if(response.ok){
             incomes = await response.json();
         } else {
+            window.alert("Falha ao consultar créditos");
             throw new Error("Erro ao buscar despensas do ano fiscal" + anoFiscal)
         }
     } catch (error) {
@@ -39,6 +41,7 @@ export const getIncomeById = async (id) => {
         if(response.ok){
             income = await response.json();
         } else {
+            window.alert("Falha ao buscar crédito");
             throw new Error("Erro ao busca crédito com id " + id)
         }
     } catch (error) {
@@ -59,6 +62,7 @@ export const updateIncome = async (income) => {
         if(response.ok){
             return true;
         } else {
+            window.alert("Não foi possível editar crédito");
             throw new Error("Falha ao editar crédito");
         } 
     } catch (error) {
@@ -79,6 +83,7 @@ export const deleteIncome = async (incomeId) => {
         if(response.ok){
             removed = true;
         } else {
+            window.alert("Não foi possível excluir crédito");
             throw new Error("Failed to remove income with id " + incomeId);
         }
     } catch (error) {
