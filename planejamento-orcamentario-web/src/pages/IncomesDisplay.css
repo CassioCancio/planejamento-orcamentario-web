@@ -13,7 +13,11 @@
     background-color: #298b9c;
 }
 
-.titleDetalhesCredit{
+.titleDetailsCredit{
+    width: 10px;
+}
+
+.titleDeleteCredit{
     width: 10px;
 }
 

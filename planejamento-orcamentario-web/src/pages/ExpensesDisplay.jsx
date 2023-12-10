@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import TableLine from "../components/DisplayTable/Table";
-import { getExpenseById, getExpensesByBalance } from "../services/expenseService";
+import { deleteExpense, getExpenseById, getExpensesByBalance } from "../services/expenseService";
 import ExpensePopup from "../components/ExpensePopup/ExpensePopup";
 import LineCells from "../components/DisplayTable/ExpenseLineCells";
 import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
@@ -31,6 +31,13 @@ const ExpensesDisplay = () => {
       expense.expectedPaymentDate = formattedPaymentDate.toISOString().split('T')[0];
       setExpensePopup(true);
       setSelectedExpense(expense);
+    }
+  }
+
+  const handleDeleteItem = async (id) => {
+    const deleted = await deleteExpense(id);
+    if(deleted){
+      setUpdatePage(updatePage+1);
     }
   }
 
@@ -62,10 +69,11 @@ const ExpensesDisplay = () => {
           <th className="titleCategoriaExpense">Categoria</th>
           <th className="titleValueExpense">Valor Solicitado</th>
           <th className="titleValueExpense">Valor Pago</th>
-          <th className="titleDetalhesExpense"></th>
+          <th className="titleDetailsExpense"></th>
+          <th className="titleDeleteExpense"></th>
         </tr>
 
-        <TableLine handleSelectItem={handleSelectExpense} list={expenses} LineCells={LineCells}/>
+        <TableLine handleSelectItem={handleSelectExpense} list={expenses} LineCells={LineCells} handleDeleteItem={handleDeleteItem}/>
 
         {expensePopup && <ExpensePopup setUpdatePage={setUpdatePage} updatePage={updatePage} expense={selectedExpense} setExpense={setSelectedExpense} setPopup={setExpensePopup}/>}
       </table>

@@ -13,7 +13,11 @@
     background-color: #298b9c;
 }
 
-.titleDetalhesExpense{
+.titleDetailsExpense{
+    width: 10px;
+}
+
+.titleDeleteExpense{
     width: 10px;
 }
 

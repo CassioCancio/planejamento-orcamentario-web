@@ -66,3 +66,24 @@ export const updateExpense = async (expense) => {
         return false;    
     }
 }
+
+export const deleteExpense = async (expenseId) => {
+    let removed = false;
+    try {
+        const requestOptions = {
+            "method": "delete",
+            "headers": {"Content-Type": "application/json"},
+            "body": ""
+        }
+        const response = await fetch("http://localhost:8080/expense/" + expenseId, requestOptions);
+        if(response.ok){
+            removed = true;
+        } else {
+            throw new Error("Failed to remove expense with id " + expenseId);
+        }
+    } catch (error) {
+        console.error("Error: " + error);
+    } finally {
+        return removed;
+    }
+}

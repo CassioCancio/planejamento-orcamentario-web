@@ -66,3 +66,24 @@ export const updateIncome = async (income) => {
         return false;    
     }
 }
+
+export const deleteIncome = async (incomeId) => {
+    let removed = false;
+    try {
+        const requestOptions = {
+            "method": "delete",
+            "headers": {"Content-Type": "application/json"},
+            "body": ""
+        }
+        const response = await fetch("http://localhost:8080/income/" + incomeId, requestOptions);
+        if(response.ok){
+            removed = true;
+        } else {
+            throw new Error("Failed to remove income with id " + incomeId);
+        }
+    } catch (error) {
+        console.error("Error: " + error);
+    } finally {
+        return removed;
+    }
+}

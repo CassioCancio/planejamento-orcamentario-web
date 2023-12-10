@@ -7,7 +7,7 @@ import TableLine from "../components/DisplayTable/Table";
 import IncomePopup from "../components/IncomePopup/IncomePopup";
 import LineCells from "../components/DisplayTable/CreditLineCells";
 import DisplayFilter from "../components/DisplayFilter/DisplayFilter";
-import { getIncomeById, getIncomesByBalance } from "../services/incomeService";
+import { deleteIncome, getIncomeById, getIncomesByBalance } from "../services/incomeService";
 import addIcon from "../images/plus.png"
 
 const IncomesDisplay = () => {
@@ -32,6 +32,13 @@ const IncomesDisplay = () => {
       income.creationDate = formattedCreationDate.toISOString().split('T')[0];
       setCreditPopup(true);
       setSelectedIncome(income);
+    }
+  }
+
+  const handleDeleteItem = async (id) => {
+    const deleted = await deleteIncome(id);
+    if(deleted){
+      setUpdatePage(updatePage+1);
     }
   }
 
@@ -61,10 +68,11 @@ const IncomesDisplay = () => {
           <th className="titleGrupoCredit">Grupo</th>
           <th className="titleNomeCredit">Nome</th>
           <th className="titleValorCredit">Valor</th>
-          <th className="titleDetalhesCredit"></th>
+          <th className="titleDetailsCredit"></th>
+          <th className="titleDeleteCredit"></th>
         </tr>
 
-        <TableLine handleSelectItem={handleSelectCredit} list={incomes} LineCells={LineCells}/>
+        <TableLine handleSelectItem={handleSelectCredit} list={incomes} LineCells={LineCells} handleDeleteItem={handleDeleteItem}/>
 
         {creditPopup && <IncomePopup setUpdatePage={setUpdatePage} updatePage={updatePage} income={selectedIncome} setIncome={setSelectedIncome} setPopup={setCreditPopup}/>}
       </table>

@@ -68,13 +68,14 @@ const ReportsDisplay = () => {
                 <th className="titleCategoriaExpense">Categoria</th>
                 <th className="titleValueExpense">Valor Solicitado</th>
                 <th className="titleValueExpense">Valor Pago</th>
-                <th className="titleDetalhesExpense"></th>
+                <th className="titleDetailsExpense"></th>
               </tr>
 
             <TableLine
                     handleSelectItem={()=>{}}
                     list={group.expenses}
                     LineCells={ExpenseLineCells}
+                    deleteButton={false}
                   />
             </table>
 
@@ -85,13 +86,14 @@ const ReportsDisplay = () => {
                 <th className="titleGrupoCredit">Grupo</th>
                 <th className="titleNomeCredit">Nome</th>
                 <th className="titleValorCredit">Valor</th>
-                <th className="titleDetalhesCredit"></th>
+                <th className="titleDetailsCredit"></th>
               </tr>
               
               <TableLine 
                     handleSelectItem={()=>{}}
                     list={group.incomes}
                     LineCells={CreditLineCells}
+                    deleteButton={false}
                   />
             </table>
 
