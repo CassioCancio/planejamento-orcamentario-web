@@ -1,6 +1,7 @@
 .navigationBar{
     position: fixed;
     left: 0;
+    z-index: 1010;
     top: 0;
     display: flex;
     justify-content: space-between;

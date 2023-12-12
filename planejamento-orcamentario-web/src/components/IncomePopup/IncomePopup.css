@@ -1,5 +1,6 @@
 .backShadow{
     position: fixed;
+    z-index: 1010;
     height: 100vh;
     width: 100%;
     background-color: #555555ac;

@@ -7,6 +7,7 @@ import Income from "./pages/IncomeCreate"
 import ExpensesDisplay from "./pages/ExpensesDisplay";
 import IncomesDisplay from "./pages/IncomesDisplay";
 import ReportsDisplay from "./pages/ReportsDisplay";
+import Management from "./pages/Management";
 
 const App = () => {
    return(
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/despesas" element={<ExpensesDisplay/>} />
         <Route path="/creditos" element={<IncomesDisplay/>} />
         <Route path="/relatorios" element={<ReportsDisplay/>} />
+        <Route path="/administrador" element={<Management/>} />
       </Routes>
     </Router>
    )

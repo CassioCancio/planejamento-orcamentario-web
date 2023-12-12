@@ -13,6 +13,7 @@ function NavBar() {
                 <a href="/despesas" className='buttonNavBar'>Despesas   </a>
                 <a href="/creditos" className='buttonNavBar'>Créditos   </a>
                 <a href="/relatorios" className='buttonNavBar'>Relatórios </a>
+                <a href="/administrador" className='buttonNavBar'>Administração </a>
                 </div>
 
                 <div className='rightNavigationBar'>

@@ -1,0 +1,45 @@
+.tableManagement{
+    width: 80%;
+    margin: 50px auto;
+}
+
+.tableManagement > tr > td > img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.tableManagement{
+    border-spacing: 0;
+    border: 1px solid #444;
+}
+
+.tableManagement tr{
+    border: 1px solid #444;
+}
+
+.widthButtonManage{
+    width: 8.5%;
+}
+
+.tableManagement td{
+    border: 1px solid #444;
+    margin: 0;
+    padding: 8px;
+}
+
+.tableManagement th{
+    background-color: #298b9c;
+    font-weight: bolder;
+    color: white;
+    border: 1px solid #444;
+    margin: 0;
+    padding: 8px;
+}
+
+.imageAlignManage{
+    text-align: center;
+}
+
+.titleAlignManage{
+    text-align: left;
+}
